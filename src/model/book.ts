@@ -10,13 +10,13 @@ interface Book{
 let books: Book [] = [];
 
 let nextBookId = 1;
-const add_Book = (title: string, author: string, year: Date) => {
+const addBook = (title: string, author: string, year: Date) => {
     let book = {Id: nextBookId++, Title: title, Author: author, Year: year}
     books.push(book);
     return book;
 }
 
-const update_book = (id: number, new_book_info: Partial<Book>) => {
+const updateBook = (id: number, new_book_info: Partial<Book>) => {
     let old_book_info = books.find(b => b.Id === id);
     if(!old_book_info){return null}
 
@@ -27,16 +27,16 @@ const update_book = (id: number, new_book_info: Partial<Book>) => {
     return old_book_info;
 }
 
-const delete_book = (id: number) => {
+const deleteBook = (id: number) => {
     let book = books.findIndex(b => b.Id === id)
     if(book === -1) return false
     return true
 }
 
-const list_all_books = () => {
+const listAllBooks= () => {
     return books
 }
 
 
-
+export {addBook, deleteBook, updateBook, listAllBooks}
 
