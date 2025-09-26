@@ -16,3 +16,15 @@ const add_Book = (title: string, author: string, year: Date) => {
     return book;
 }
 
+const update_book = (id: number, new_book_info: Partial<Book>) => {
+    let old_book_info = books.find(b => b.Id === id);
+    if(!old_book_info){return null}
+
+    if(new_book_info.Author) old_book_info.Author = new_book_info.Author;   
+    if(new_book_info.Title) old_book_info.Title = new_book_info.Title;   
+    if(new_book_info.Year)old_book_info.Year = new_book_info.Year;   
+
+    return old_book_info;
+}
+
+
