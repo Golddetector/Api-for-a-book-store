@@ -27,4 +27,16 @@ const update_book = (id: number, new_book_info: Partial<Book>) => {
     return old_book_info;
 }
 
+const delete_book = (id: number) => {
+    let book = books.findIndex(b => b.Id === id)
+    if(book === -1) return false
+    return true
+}
+
+const list_all_books = () => {
+    return books
+}
+
+
+
 
