@@ -1,3 +1,4 @@
+import { error } from "console";
 
 
 interface Book{
@@ -12,12 +13,14 @@ let books: Book [] = [];
 let nextBookId = 1;
 const addBook = (title: string, author: string, year: Date) => {
     let book = {Id: nextBookId++, Title: title, Author: author, Year: year}
+    if(books.findIndex(b => b.Author === author && b.Title === title && b.Year.getTime === year.getTime) != -1) {throw new Error("Book already exists")}
     books.push(book);
     return book;
 }
 
 const updateBook = (id: number, new_book_info: Partial<Book>) => {
-    let old_book_info = books.find(b => b.Id === id);
+    let old_book_info = books.find(b => b.Id === Number(id));
+    console.log(old_book_info);
     if(!old_book_info){return null}
 
     if(new_book_info.Author) old_book_info.Author = new_book_info.Author;   
