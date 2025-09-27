@@ -31,7 +31,7 @@ const updateBook = (id: number, new_book_info: Partial<Book>) => {
 }
 
 const deleteBook = (id: number) => {
-    let book = books.findIndex(b => b.Id === id)
+    let book = books.findIndex(b => b.Id === Number(id))
     if(book === -1) return false
     return true
 }
