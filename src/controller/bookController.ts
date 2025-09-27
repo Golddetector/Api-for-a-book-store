@@ -1,5 +1,5 @@
 
-import express, {Request,response,Response} from "express"
+import  {Request,Response} from "express"
 const books = require("../model/book")
 
 
@@ -19,7 +19,7 @@ const addBook = async (req:Request, res: Response) => {
 const updateBook = async (req: Request, res: Response) => {
      try{
         const {Title, Author, Year} = req.body
-        const Id = req.params.Id;
+        const {Id} = req.params
         const book = await Promise.resolve(books.updateBook(Id,{Title,Author,Year}))
         res.status(200).json(book);
      }
