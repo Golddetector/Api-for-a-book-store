@@ -1,5 +1,5 @@
-import { error } from "console";
 
+import { appError } from "../utils/appError";
 
 interface Book{
     Id: number,
@@ -13,7 +13,7 @@ let books: Book [] = [];
 let nextBookId = 1;
 const addBook = (title: string, author: string, year: Date) => {
     let book = {Id: nextBookId++, Title: title, Author: author, Year: year}
-    if(books.findIndex(b => b.Author === author && b.Title === title && b.Year.getTime === year.getTime) != -1) {throw new Error("Book already exists")}
+    if(books.findIndex(b => b.Author === author && b.Title === title && b.Year.getTime === year.getTime) != -1) {throw new appError(400,"Book already exists")}
     books.push(book);
     return book;
 }
