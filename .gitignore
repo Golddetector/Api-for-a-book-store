@@ -149,3 +149,5 @@ pnpm-debug.log*
 .idea/
 .DS_Store
 
+
+/src/generated/prisma
